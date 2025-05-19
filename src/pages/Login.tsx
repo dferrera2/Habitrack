@@ -1,3 +1,4 @@
+// src/pages/Login.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -5,20 +6,21 @@ const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Para redirigir a otras rutas
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+    e.preventDefault(); // Evitar recarga de página
 
+    // Validación simple de campos vacíos
     if (!email || !password) {
       setError('Por favor, ingresa tu correo y contraseña.');
       return;
     }
 
-    // Simulamos un login básico
+    // Validación de credenciales (esto debería reemplazarse por una API real)
     if (email === 'usuario@example.com' && password === 'contraseña123') {
       setError('');
-      navigate('/dashboard'); // Redirige al Dashboard si el login es exitoso
+      navigate('/dashboard'); // Redirige a Dashboard si login es exitoso
     } else {
       setError('Correo o contraseña incorrectos');
     }
@@ -34,14 +36,14 @@ const Login: React.FC = () => {
           className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-4"
           placeholder="Correo electrónico"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)} // Actualiza el estado del email
         />
         <input
           type="password"
           className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-6"
           placeholder="Contraseña"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)} // Actualiza el estado de la contraseña
         />
         <button className="bg-verde-oscuro text-white py-2 px-6 rounded-lg hover:bg-verde-medio transition duration-300 w-full">
           Iniciar sesión
