@@ -1,19 +1,22 @@
 // src/App.tsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <div>
+      <nav>
+        <Link to="/">Login</Link>
+        <Link to="/registro">Registro</Link>
+      </nav>
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </Router>
+    </div>
   );
 };
 

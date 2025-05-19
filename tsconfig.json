@@ -1,7 +1,23 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx"
+  },
+  "exclude": [
+    "node_modules",        // Asegúrate de que node_modules esté excluido
+    "postcss.config.js",   // Excluye el archivo de configuración de PostCSS
+    "dist"                 // Asegúrate de que los archivos de salida también estén excluidos
+  ],
+  "include": [
+    "src/**/*"
   ]
 }

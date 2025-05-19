@@ -8,65 +8,59 @@ const Register: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const navigate = useNavigate(); // Para redirigir a Login
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validación de campos vacíos
     if (!fullName || !email || !password || !confirmPassword) {
       setError('Por favor, completa todos los campos.');
       return;
     }
 
-    // Validación de contraseñas
     if (password !== confirmPassword) {
       setError('Las contraseñas no coinciden.');
       return;
     }
 
     setError('');
-    console.log('Usuario registrado correctamente');
-    // Una vez registrado, redirige a la página de Login
-    navigate('/login');
+    navigate('/');  // Redirigir a la página de Login después del registro
   };
 
   return (
-    <div className="bg-verde-claro h-screen flex justify-center items-center">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg w-80">
-        <h2 className="text-verde-oscuro text-2xl font-bold mb-6">Crear cuenta</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <form onSubmit={handleSubmit} className="p-6 bg-white rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold mb-4">Crear cuenta</h2>
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <input
           type="text"
-          className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-4"
           placeholder="Nombre completo"
+          className="p-2 border border-gray-300 rounded mb-4 w-full"
           value={fullName}
-          onChange={(e) => setFullName(e.target.value)} // Actualiza el nombre
+          onChange={(e) => setFullName(e.target.value)}
         />
         <input
           type="email"
-          className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-4"
           placeholder="Correo electrónico"
+          className="p-2 border border-gray-300 rounded mb-4 w-full"
           value={email}
-          onChange={(e) => setEmail(e.target.value)} // Actualiza el correo
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="password"
-          className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-4"
           placeholder="Contraseña"
+          className="p-2 border border-gray-300 rounded mb-4 w-full"
           value={password}
-          onChange={(e) => setPassword(e.target.value)} // Actualiza la contraseña
+          onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
-          className="p-3 rounded-lg border-2 border-gray-300 focus:border-verde-oscuro focus:outline-none w-full mb-6"
           placeholder="Confirmar contraseña"
+          className="p-2 border border-gray-300 rounded mb-4 w-full"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)} // Actualiza la confirmación
+          onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button className="bg-verde-oscuro text-white py-2 px-6 rounded-lg hover:bg-verde-medio transition duration-300 w-full">
-          Crear cuenta
-        </button>
+        <button className="w-full py-2 bg-green-500 text-white rounded hover:bg-green-600">Crear cuenta</button>
       </form>
     </div>
   );
