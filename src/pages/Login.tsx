@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';  // Importar Link para la navegación
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const navigate = useNavigate(); // Hook para redirigir
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+    e.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
     if (!email || !password) {
       setError('Por favor, ingresa tu correo y contraseña.');
       return;
     }
 
+    // Simulamos un login básico
     if (email === 'usuario@example.com' && password === 'contraseña123') {
       setError('');
-      navigate('/dashboard'); // Redirigir al dashboard si es exitoso
+      navigate('/dashboard'); // Redirige al Dashboard si el login es exitoso
     } else {
       setError('Correo o contraseña incorrectos');
     }
@@ -46,14 +47,10 @@ const Login: React.FC = () => {
           Iniciar sesión
         </button>
       </form>
-
-      {/* Enlace a la página de registro */}
       <div className="mt-4 text-center">
         <p className="text-verde-oscuro">
           ¿No tienes una cuenta?{" "}
-          <Link to="/registro" className="text-verde-medio hover:underline">
-            Regístrate aquí
-          </Link>
+          <a href="/registro" className="text-verde-medio hover:underline">Regístrate aquí</a>
         </p>
       </div>
     </div>
