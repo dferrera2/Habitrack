@@ -17,7 +17,7 @@ export default function Navbar() {
 
         <nav className="flex items-center gap-10">
           <Link to="/dashboard" className="text-gray-700 hover:text-green-600 font-medium no-underline">
-            Dashboard
+            Inicio
           </Link>
           <Link to="/nuevo" className="text-gray-700 hover:text-green-600 font-medium no-underline">
             Nuevo hábito
